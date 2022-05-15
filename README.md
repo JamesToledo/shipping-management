@@ -1,24 +1,37 @@
-# README
+# Shipping Management
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este projeto é uma aplicação web responsável por gerenciar os meios de transporte disponíveis para e-comerces. No qual poderão ser feitos orçamentos em diferentes transportadoras e serão listados os preços e prazos de cada transportadora com status ativo, além disso, visitantes podem consultar o status de uma entrega informando o código de rastreamento da entrega.
 
-Things you may want to cover:
+<h3>Como executar o projeto:</h3>
+  com o git já instalado use o comando:<br>
+  git clone git@github.com:JamesToledo/shipping-management.git
 
-* Ruby version
+  e depois:<br>
+  bin/setup
 
-* System dependencies
+  para rodar os testes:<br>
+  bundle exec rspec
 
-* Configuration
+  para rodar a aplicação em sua máquina:<br>
+  rails server
 
-* Database creation
+  acesse em seu navegador:<br>
+  http://localhost:3000/
 
-* Database initialization
+Dependencias do sistema: <br>
+Rails 7.0.3 <br>
+sqlite3 1.4 <br>
+Ruby 3.1.0 <br>
+Nodejs 14.18.2 <br>
+Yarn 1.22.15 <br>
 
-* How to run the test suite
+Gems :
+* gem 'capybara'(ferramenta de testes)
+* gem 'factory_bot_rails'(ferramenta de testes)
+* gem 'faker'(ferramenta de testes)
+* gem 'pry-byebug'(usada no desenvolviento do projeto para ver as coisas acontecerem no runtime)
+* gem 'rspec-rails'(ferramenta de testes)
+* gem 'shoulda-matchers'(ferramenta de testes)
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Link do Trello:
+https://trello.com/b/M4la3re0/projeto-individudal
