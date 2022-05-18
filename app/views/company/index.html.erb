@@ -1,0 +1,20 @@
+<h1>Gerenciamento de Transportadoras</h1>
+
+<section>
+  <% @companies.each do |c| %>
+    <table style="width: 10%">
+      <thead>
+        <tr>
+          <th style="text-align:center">Nome</th>
+          <th style="text-align:center">Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:center"><%= c.brand_name %></td>
+          <td style="text-align:center"><%= c.state_abbr %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</section>
