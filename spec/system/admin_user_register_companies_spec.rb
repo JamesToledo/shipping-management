@@ -17,4 +17,23 @@ describe 'Admin_User register company' do
     expect(page).to have_field('CEP')
     expect(page).to have_field('Abreviação do Estado')
   end
+
+  it 'and successfully register' do
+    c = build(:company)
+
+    visit new_company_path
+    fill_in 'Nome da Marca', with: c.brand_name
+    fill_in 'Razão Social', with: c.corporate_name
+    fill_in 'CNPJ', with: c.registration_number
+    fill_in 'Endereço', with: c.address
+    fill_in 'Domínio do Email', with: c.email_domain
+    fill_in 'CEP', with: c.postal_code
+    fill_in 'Abreviação do Estado', with: c.state_abbr
+    click_on 'cadastrar'
+
+    expect(current_path).to eq company_index_path
+    expect(page).to have_content 'Transportadora Cadastrada!'
+    expect(page).to have_content c.brand_name
+    expect(page).to have_content c.state_abbr
+  end
 end
