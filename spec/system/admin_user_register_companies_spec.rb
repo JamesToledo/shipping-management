@@ -36,4 +36,20 @@ describe 'Admin_User register company' do
     expect(page).to have_content c.brand_name
     expect(page).to have_content c.state_abbr
   end
+
+  it 'with empty fields' do
+    visit new_company_path
+    fill_in 'Nome da Marca', with: ''
+    fill_in 'Domínio do Email', with: ''
+    fill_in 'CEP', with: ''
+    fill_in 'Abreviação do Estado', with: ''
+    click_on 'cadastrar'
+
+    expect(current_path).to eq companies_path
+    expect(page).to have_content 'Transportadora não cadastrada'
+    expect(page).to have_content 'Nome da Marca não pode ficar em branco'
+    expect(page).to have_content 'Domínio do Email não pode ficar em branco'
+    expect(page).to have_content 'CEP não pode ficar em branco'
+    expect(page).to have_content 'Abreviação do Estado não pode ficar em branco'
+  end
 end
