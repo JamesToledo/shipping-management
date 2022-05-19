@@ -4,7 +4,7 @@ describe 'Admin_User visit the start page' do
   it 'and sees the content' do
     company =  create(:company)
 
-    visit company_index_path
+    visit companies_path
 
     expect(page).to have_content 'Gerenciamento de Transportadoras'
     expect(page).to have_content company.brand_name
@@ -12,7 +12,7 @@ describe 'Admin_User visit the start page' do
   end
 
   it 'and there are no companies registered' do
-    visit company_index_path
+    visit companies_path
 
     expect(page).to have_content 'não há transportadoras cadastradas'
   end

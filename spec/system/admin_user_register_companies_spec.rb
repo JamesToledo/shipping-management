@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe 'Admin_User register company' do
   it 'Admin_User sees the registration form' do
-    visit company_index_path
+    visit companies_path
     within('nav') do
       click_on 'Nova Transportadora'
     end
@@ -31,7 +31,7 @@ describe 'Admin_User register company' do
     fill_in 'Abreviação do Estado', with: c.state_abbr
     click_on 'cadastrar'
 
-    expect(current_path).to eq company_index_path
+    expect(current_path).to eq companies_path
     expect(page).to have_content 'Transportadora Cadastrada!'
     expect(page).to have_content c.brand_name
     expect(page).to have_content c.state_abbr
