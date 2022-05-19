@@ -1,7 +1,7 @@
 <section>
   <div><h1>Cadastro de Transportadora</h1></div>
   <div>
-    <%= form_with model: @company, url: false do |f|%>
+    <%= form_with model: @company, url: '/company' do |f|%>
       <div>
         <%= f.label :brand_name %>
         <%= f.text_field :brand_name, placeholder: 'entregas fast' %>
@@ -29,6 +29,9 @@
       <div>
         <%= f.label :postal_code %>
         <%= f.text_field :postal_code, placeholder: '098535-30'%>
+      </div>
+      <div>
+        <%= f.submit %>
       </div>
     <% end %>
   <div>

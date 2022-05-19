@@ -1,6 +1,5 @@
 ---
 pt-BR:
-  hello: 'Olá Mundo'
   activerecord:
     models:
       company: Transportadora
