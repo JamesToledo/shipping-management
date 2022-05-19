@@ -1,0 +1,15 @@
+---
+pt-BR:
+  hello: 'Olá Mundo'
+  activerecord:
+    models:
+      company: Transportadora
+    attributes:
+      company:
+        brand_name: 'Nome da Marca'
+        corporate_name: 'Razão Social'
+        registration_number: 'CNPJ'
+        address: 'Endereço'
+        email_domain: 'Domínio do Email'
+        postal_code: 'CEP'
+        state_abbr: 'Abreviação do Estado'
