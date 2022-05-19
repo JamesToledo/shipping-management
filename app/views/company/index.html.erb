@@ -20,4 +20,7 @@
   <% if @companies.empty? %>
     <p>não há transportadoras cadastradas</p>
   <% end %>
+  <nav>
+    <%= link_to 'Nova Transportadora', new_company_path %>
+  </nav>
 </section>

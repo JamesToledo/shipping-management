@@ -1,0 +1,35 @@
+<section>
+  <div><h1>Cadastro de Transportadora</h1></div>
+  <div>
+    <%= form_with model: @company, url: false do |f|%>
+      <div>
+        <%= f.label :brand_name %>
+        <%= f.text_field :brand_name, placeholder: 'entregas fast' %>
+      </div>
+      <div>
+        <%= f.label :corporate_name %>
+        <%= f.text_field :corporate_name, placeholder: 'entregas fast Inc.'%>
+      </div>
+      <div>
+        <%= f.label :registration_number %>
+        <%= f.text_field :registration_number, placeholder: '84.344.544/0001-60'%>
+      </div>
+      <div>
+        <%= f.label :email_domain %>
+        <%= f.text_field :email_domain, placeholder: 'entregasfast.com'%>
+      </div>
+      <div>
+        <%= f.label :state_abbr %>
+        <%= f.text_field :state_abbr, placeholder: 'SP'%>
+      </div>
+      <div>
+        <%= f.label :address %>
+        <%= f.text_field :address, placeholder: 'Rua Leopoldo Guimaraes, 233'%>
+      </div>
+      <div>
+        <%= f.label :postal_code %>
+        <%= f.text_field :postal_code, placeholder: '098535-30'%>
+      </div>
+    <% end %>
+  <div>
+</section>
