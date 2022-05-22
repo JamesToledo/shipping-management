@@ -52,6 +52,11 @@
         <% end %>
       </div>
       <div>
+        <%= f.label :status %>
+        <%= f.select :status, [[Company.human_enum_name(:status, :active), :active],
+                               [Company.human_enum_name(:status, :disabled), :disabled]] %>
+      </div>
+      <div>
         <%= f.submit %>
       </div>
     <% end %>

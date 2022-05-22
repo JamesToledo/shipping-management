@@ -40,7 +40,7 @@ class CompaniesController < ApplicationController
 
   def company_params
     params.require(:company).permit(:brand_name, :corporate_name, :registration_number, :address,
-                                    :email_domain, :postal_code, :state_abbr)
+                                    :email_domain, :postal_code, :state_abbr, :status)
   end
 
   def set_company
