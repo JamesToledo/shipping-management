@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CompaniesController < ApplicationController
-  before_action :set_company, only: %i[show edit]
+  before_action :set_company, only: %i[show edit update]
 
   def index
     @companies = Company.all
@@ -26,6 +26,15 @@ class CompaniesController < ApplicationController
   end
 
   def edit; end
+
+  def update
+    if @company.update(company_params)
+      redirect_to @company, notice: 'Transportadora Atualizada!'
+    else
+      flash.now[:notice] = 'Transportadora não Atualizada'
+      render 'edit'
+    end
+  end
 
   private
 
