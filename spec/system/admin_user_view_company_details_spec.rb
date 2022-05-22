@@ -15,6 +15,7 @@ describe 'admin user sees company details' do
     expect(page).to have_content "CNPJ: #{company.registration_number}"
     expect(page).to have_content "Endereço: #{company.address} - #{
                                   company.state_abbr}, #{company.postal_code}"
+    expect(page).to have_content "Status: #{I18n.t(company.status)}"
   end
 
   it 'and return to admin home page' do

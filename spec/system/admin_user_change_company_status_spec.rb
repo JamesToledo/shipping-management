@@ -7,7 +7,7 @@ describe 'admin user change company status' do
     company = create(:company)
 
     visit edit_company_path(company.id)
-    select 'desativo', from: 'Status'
+    select 'inativo', from: 'Status'
     click_on 'atualizar'
 
     expect(Company.find(1).status).to eq 'disabled'

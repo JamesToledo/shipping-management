@@ -6,6 +6,7 @@
     <li><strong>CNPJ: </strong><%= @company.registration_number %></li>
     <li><strong>Endereço: </strong><%= "#{@company.address} - #{@company.state_abbr.upcase},
                                         #{@company.postal_code}" %></li>
+    <li><strong>Status: </strong><%= I18n.t(@company.status) %></li>
   </ul>
 </section>
 

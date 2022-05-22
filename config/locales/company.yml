@@ -1,5 +1,7 @@
 ---
 pt-BR:
+  active: 'ativo'
+  disabled: 'inativo'
   activerecord:
     models:
       company: Transportadora
@@ -12,3 +14,6 @@ pt-BR:
         email_domain: 'Domínio do Email'
         postal_code: 'CEP'
         state_abbr: 'Abreviação do Estado'
+        statuses:
+          active: 'ativo'
+          disabled: 'inativo'

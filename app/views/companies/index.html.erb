@@ -7,12 +7,14 @@
         <tr>
           <th style="text-align:center">Nome</th>
           <th style="text-align:center">Estado</th>
+          <th style="text-align:center">Status</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td style="text-align:center"><%= link_to c.brand_name, company_path(c.id) %></td>
           <td style="text-align:center"><%= c.state_abbr.upcase %></td>
+          <td style="text-align:center"><%= I18n.t(c.status) %></td>
         </tr>
       </tbody>
     </table>

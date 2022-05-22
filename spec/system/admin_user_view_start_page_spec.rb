@@ -9,6 +9,7 @@ describe 'Admin_User visit the start page' do
     expect(page).to have_content 'Gerenciamento de Transportadoras'
     expect(page).to have_content company.brand_name
     expect(page).to have_content company.state_abbr
+    expect(page).to have_content I18n.t(company.status)
   end
 
   it 'and there are no companies registered' do
