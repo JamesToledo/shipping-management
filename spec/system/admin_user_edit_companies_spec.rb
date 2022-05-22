@@ -18,4 +18,28 @@ describe 'admin user edits a company' do
     expect(page).to have_field('CEP', with: company.postal_code)
     expect(page).to have_field('Abreviação do Estado', with: company.state_abbr)
   end
+
+  it 'successfully' do
+    create(:company)
+
+    visit company_path(1)
+    click_on 'editar'
+    fill_in 'Nome da Marca', with: 'EcoFort'
+    click_on 'atualizar'
+
+    expect(page).to have_content 'Transportadora Atualizada!'
+  end
+
+  it 'with invalid parameters' do
+    create(:company)
+
+    visit company_path(1)
+    click_on 'editar'
+    fill_in 'Nome da Marca', with: ''
+    click_on 'atualizar'
+
+    expect(page).to have_content 'Editar Transportadora'
+    expect(page).to have_content 'Transportadora não Atualizada'
+    expect(page).to have_content 'Nome da Marca não pode ficar em branco'
+  end
 end
