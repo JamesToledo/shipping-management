@@ -1,0 +1,24 @@
+<div><h2>Veículos Disponíveis</h2></div>
+<section>
+  <% @vehicles.each do |vehicle| %>
+    <div>
+      <table style="width: 10%">
+        <thead>
+          <tr>
+            <th style="text-align:center">Modelo</th>
+            <th style="text-align:center">Capacidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:center"><%= link_to vehicle.vehicle_model, vehicle %></td>
+            <td style="text-align:center"><%= "#{vehicle.load_capacity}Kg" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</section>
+<nav>
+  <%= link_to 'cadastrar veiculos', new_vehicle_path %>
+</nav>
