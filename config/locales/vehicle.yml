@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      vehicle: Veículo
+    attributes:
+      vehicle:
+        vehicle_model: Modelo do Veículo
+        vehicle_make: Marca do Veículo
+        load_capacity: Carga Máxima
+        year: Ano de Fabricação
+        vehicle_plate: Placa do Veículo

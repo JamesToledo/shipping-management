@@ -15,7 +15,10 @@ class User < ApplicationRecord
       self.role = :admin
     else
       Company.all.each do |company|
-        return self.role = :company_user if email.include?(company.email_domain)
+        if email.include?(company.email_domain)
+          self.role = :company_user
+          self.company_id = company.id
+        end
       end
     end
   end

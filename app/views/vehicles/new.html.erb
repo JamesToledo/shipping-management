@@ -1,0 +1,28 @@
+<div><h1>Cadastro de Veículos</h1></div>
+<section>
+  <%= form_with model: @vehicle do |f|%>
+    <div>
+      <%= f.label :vehicle_model %>:<br>
+      <%= f.text_field :vehicle_model, placeholder: 'Cargo 1317' %>
+    </div>
+    <div>
+      <%= f.label :vehicle_make %>:<br>
+      <%= f.text_field :vehicle_make, placeholder: 'Ford' %>
+    </div>
+    <div>
+      <%= f.label :vehicle_plate %>:<br>
+      <%= f.text_field :vehicle_plate, placeholder: 'BIW-4365' %>
+    </div>
+    <div>
+      <%= f.label :year %>:<br>
+      <%= f.text_field :year, placeholder: '2010' %>
+    </div>
+    <div>
+      <%= f.label :load_capacity %>:<br>
+      <%= f.number_field :load_capacity, placeholder: 1000 %>
+    </div>
+    <div>
+      <%= f.submit %>
+    </div>
+  <% end %>
+</section>

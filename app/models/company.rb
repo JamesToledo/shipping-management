@@ -6,4 +6,6 @@ class Company < ApplicationRecord
             :state_abbr, presence: true
 
   enum status: { active: 0, disabled: 1 }
+
+  has_many :vehicles
 end
