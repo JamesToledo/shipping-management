@@ -1,0 +1,60 @@
+<div><h1>Preços</h1></div>
+<div>
+  <div>
+    <% if @budgets.any? %>
+      <% @budgets.each do |budget| %>
+        <div>
+          <table style="width: 20%">
+            <thead>
+              <tr>
+                <th style="text-align:center">Metros Cúbicos</th>
+                <th style="text-align:center">Peso</th>
+                <th style="text-align:center">Valor por Km</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align:center"><%= budget.row_generator(budget.min_size, budget.max_size)%></td>
+                <td style="text-align:center"><%= budget.row_generator(budget.min_weight, budget.max_weight) %></td>
+                <td style="text-align:center"><%= "R$ #{budget.range_price}" %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    <% else %>
+      <p>Não há preços cadastrados<p>
+    <% end %>
+  </div>
+</div>
+<nav>
+  <%= link_to 'Cadastrar Preços', new_budget_path %>
+</nav>
+<div><h1>Prazos</h1></div>
+<div>
+  <div>
+    <% if @deadlines %>
+      <% @deadlines.each do |budget| %>
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    <% else %>
+      <p>Não há prazos cadastrados<p>
+    <% end %>
+  </div>
+</div>
+<nav>
+  <%= link_to 'Cadastrar Prazos' %>
+</nav>

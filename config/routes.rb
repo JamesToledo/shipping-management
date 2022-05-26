@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get '/users', to: 'users#index', as: :user_root
 
+  get '/quotes', to: 'quotes#index', as: :quotes
+
   root 'home#index'
 
   resources :vehicles, only: %i[index show create new edit update]
