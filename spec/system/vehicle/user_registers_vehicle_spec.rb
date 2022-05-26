@@ -5,9 +5,7 @@ require 'rails_helper'
 describe 'User registers vehicle' do
   it 'and sees vehicle register form' do
     visit vehicles_path
-    within('nav') do
-      click_on 'cadastrar veiculos'
-    end
+    click_on 'cadastrar veiculos'
 
     expect(page).to have_css('h1', text: 'Cadastro de Veículos')
     expect(page).to have_field 'Marca do Veículo'
@@ -20,7 +18,7 @@ describe 'User registers vehicle' do
 
   it 'successfully' do
     company = create(:company)
-    user = create(:user, email: "#{Faker::Name.last_name}@#{company.email_domain}", company_id: company.id)
+    user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
     vehicle = build(:vehicle, company_id: company.id)
 
     sign_in user

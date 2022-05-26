@@ -5,9 +5,8 @@ require 'rails_helper'
 describe 'Admin_User register company' do
   it 'Admin_User sees the registration form' do
     visit companies_path
-    within('nav') do
-      click_on 'Nova Transportadora'
-    end
+    click_on 'Nova Transportadora'
+
     expect(page).to have_content 'Cadastro de Transportadora'
     expect(page).to have_field('Nome da Marca')
     expect(page).to have_field('Razão Social')

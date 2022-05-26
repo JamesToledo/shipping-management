@@ -33,9 +33,7 @@ describe 'User sees vehicles list' do
 
     visit vehicles_path
     click_on vehicle.vehicle_model
-    within 'nav' do
-      click_on 'Voltar'
-    end
+    click_on 'Voltar'
 
     expect(current_path).to eq vehicles_path
   end

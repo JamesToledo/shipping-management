@@ -23,9 +23,8 @@ describe 'admin user sees company details' do
 
     visit companies_path
     click_on company.brand_name
-    within 'nav' do
-      click_on 'voltar'
-    end
+    click_on 'voltar'
+
     expect(current_path).to eq companies_path
   end
 end
