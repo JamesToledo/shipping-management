@@ -11,6 +11,15 @@
   </head>
 
   <body>
+    <header>
+      <nav style="text-align:right">
+        <% if user_signed_in? %>
+          <%= button_to 'Logout',  destroy_user_session_path, method: 'delete' %>
+        <% else %>
+          <%= link_to 'Login', new_user_session_path %>
+        <% end %>
+      </nav>
+    </header>
     <main>
       <div>
         <p class="notice"><%= notice %></p>
