@@ -1,0 +1,16 @@
+<div style="text-align:center"><h1>Boas Vindas <%= current_user.username %>!</h1></div>
+<section style="text-align:center">
+  <div><h3>Onde você deseja ir?</h3></div>
+  <% if current_user.role == 'company_user' %>
+    <div>
+      <%= link_to 'Veículos', vehicles_path %><br />
+      <%= link_to 'Preços e Prazos', quotes_path %><br />
+      <%= link_to 'Ordens de Serviço' %>
+    </div>
+  <% elsif current_user.role == 'admin' %>
+    <div>
+      <%= link_to 'Gerenciar Transportadoras', companies_path %><br />
+      <%= link_to 'Consultar Preços e Prazos' %>
+    </div>
+  <% end %>
+</section>

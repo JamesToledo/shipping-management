@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      budget:
+        one: Orçamento
+        other: Orçamentos
+    attributes:
+      budget:
+        min_size: Tamanho Mínimo
+        max_size: Tamanho Máximo
+        min_weight: Peso Mínimo
+        max_weight: Peso Máximo
+        range_price: Valor por Km
