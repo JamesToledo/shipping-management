@@ -36,4 +36,11 @@ describe 'User registers a budget' do
     expect(page).to have_content 'Intervalo Cadastrado!'
     expect(current_path).to eq quotes_path
   end
+
+  it 'and can cancel' do
+    visit new_budget_path
+    click_on 'cancelar'
+
+    expect(current_path).to eq quotes_path
+  end
 end

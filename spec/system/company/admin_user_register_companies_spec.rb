@@ -51,4 +51,11 @@ describe 'Admin_User register company' do
     expect(page).to have_content 'CEP não pode ficar em branco'
     expect(page).to have_content 'Abreviação do Estado não pode ficar em branco'
   end
+
+  it 'and can cancel' do
+    visit new_company_path
+    click_on 'cancelar'
+
+    expect(current_path).to eq companies_path
+  end
 end

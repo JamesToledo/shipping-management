@@ -35,4 +35,11 @@ describe 'User registers vehicle' do
     expect(page).to have_content 'Veículo Cadastrado!'
     expect(current_path).to eq vehicle_path(1)
   end
+
+  it 'and can cancel' do
+    visit new_vehicle_path
+    click_on 'cancelar'
+
+    expect(current_path).to eq vehicles_path
+  end
 end
