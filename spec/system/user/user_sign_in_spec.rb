@@ -6,13 +6,7 @@ describe 'User authenticates' do
   it 'successfully' do
     user = create(:user)
 
-    visit root_path
-    click_on 'Login'
-    within 'form' do
-      fill_in 'E-mail', with: user.email
-      fill_in 'Senha', with: user.password
-      click_on 'Login'
-    end
+    login(user)
 
     expect(page).to have_content 'Login efetuado com sucesso'
   end
@@ -20,51 +14,40 @@ describe 'User authenticates' do
   it 'and successfully logout' do
     user = create(:user)
 
-    visit root_path
-    click_on 'Login'
-    within 'form' do
-      fill_in 'E-mail', with: user.email
-      fill_in 'Senha', with: user.password
-      click_on 'Login'
-    end
+    login(user)
     click_on 'Logout'
 
     expect(current_path).to eq root_path
     expect(page).to have_content 'Logout efetuado com sucesso'
   end
 
-  # context 'when logged as admin' do
-  #   it 'is directed to the company listing page' do
-  #     admin = User.create!(username: 'admin', email: 'admin@sistemadefrete.com', password: 'Admin123')
+  context 'when logged as admin' do
+    it 'sees admin user contents' do
+      admin = create(:user, email: 'admin@sistemadefrete.com')
 
-  #     visit root_path
-  #     click_on 'Login'
-  #     within 'form' do
-  #       fill_in 'E-mail', with: admin.email
-  #       fill_in 'Senha', with: admin.password
-  #       click_on 'Login'
-  #     end
+      login(admin)
 
-  #     expect(page).to have_content 'Login efetuado com sucesso'
-  #     expect(current_path).to eq companies_path
-  #   end
-  # end
+      expect(page).to have_content 'Login efetuado com sucesso'
+      expect(page).to have_css('h1', text: "Boas Vindas #{admin.username}!")
+      expect(page).to have_link 'Gerenciar Transportadoras'
+      expect(page).to have_link 'Consultar Preços e Prazos'
+      expect(current_path).to eq user_root_path
+    end
+  end
 
-  # context 'when logged as company_user' do
-  #   it 'is directed to the company details page' do
-  #     company = create(:company)
-  #     user = User.create!(username: 'Pedro', email: "pedro@#{company.email_domain}", password: 'Pedro123')
+  context 'when logged as company_user' do
+    it 'sees normal user contents' do
+      company = create(:company)
+      user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
 
-  #     visit root_path
-  #     click_on 'Login'
-  #     within 'form' do
-  #       fill_in 'E-mail', with: user.email
-  #       fill_in 'Senha', with: user.password
-  #       click_on 'Login'
-  #     end
+      login(user)
 
-  #     expect(page).to have_content 'Login efetuado com sucesso'
-  #     expect(current_path).to eq company_user_path
-  #   end
-  # end
+      expect(page).to have_content 'Login efetuado com sucesso'
+      expect(page).to have_css('h1', text: "Boas Vindas #{user.username}!")
+      expect(page).to have_link 'Veículos'
+      expect(page).to have_link 'Preços e Prazos'
+      expect(page).to have_link 'Ordens de Serviço'
+      expect(current_path).to eq user_root_path
+    end
+  end
 end
