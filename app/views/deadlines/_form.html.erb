@@ -1,6 +1,6 @@
 <section style="text-align:center">
   <div>
-    <%= form_with model: @deadline do |form| %>
+    <%= form_with model: @deadline, data: { turbo: false } do |form| %>
       <div>
         <%= form.label :min_space %> (Km)<br />
         <%= form.number_field :min_space, placeholder: '0' %>

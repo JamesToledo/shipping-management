@@ -14,7 +14,7 @@ class BudgetsController < ApplicationController
     if @budget.save
       redirect_to quotes_path, notice: 'Intervalo Cadastrado!'
     else
-      flash.now[:notice] = 'Intervalo não Cadastrado'
+      flash.now[:alert] = 'Intervalo não Cadastrado'
       render 'new'
     end
   end

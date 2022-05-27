@@ -1,6 +1,6 @@
 <section style="text-align:center">
   <div>
-    <%= form_with model: @budget do |form| %>
+    <%= form_with model: @budget, data: { turbo: false } do |form| %>
       <div>
         <%= form.label :min_size %> (m³)<br />
         <%= form.number_field :min_size, step: :any %>

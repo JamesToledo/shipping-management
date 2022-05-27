@@ -20,7 +20,7 @@ class CompaniesController < ApplicationController
     if @company.save
       redirect_to companies_path, notice: 'Transportadora Cadastrada!'
     else
-      flash.now[:notice] = 'Transportadora não cadastrada'
+      flash.now[:alert] = 'Transportadora não cadastrada'
 
       render 'new'
     end
@@ -32,7 +32,7 @@ class CompaniesController < ApplicationController
     if @company.update(company_params)
       redirect_to @company, notice: 'Transportadora Atualizada!'
     else
-      flash.now[:notice] = 'Transportadora não Atualizada'
+      flash.now[:alert] = 'Transportadora não Atualizada'
       render 'edit'
     end
   end

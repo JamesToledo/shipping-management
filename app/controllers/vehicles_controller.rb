@@ -21,7 +21,7 @@ class VehiclesController < ApplicationController
     if @vehicle.save
       redirect_to @vehicle, notice: 'Veículo Cadastrado!'
     else
-      flash.now[:notice] = 'Veículo não Cadastrado'
+      flash.now[:alert] = 'Veículo não Cadastrado'
       render 'new'
     end
   end

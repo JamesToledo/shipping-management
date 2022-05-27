@@ -14,7 +14,7 @@ class DeadlinesController < ApplicationController
     if @deadline.save
       redirect_to quotes_path, notice: 'Prazo Salvo!'
     else
-      flash.now[:notice] = 'Prazo não Salvo'
+      flash.now[:alert] = 'Prazo não Salvo'
       render 'new'
     end
   end

@@ -1,6 +1,6 @@
 <section style="text-align:center">
   <div>
-    <%= form_with model: @shipping_cust do |form| %>
+    <%= form_with model: @shipping_cust, data: { turbo: false } do |form| %>
       <div>
         <%= form.label :value %><br />
         <%= form.number_field :value, step: :any %>

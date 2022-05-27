@@ -16,7 +16,7 @@ class ShippingCustsController < ApplicationController
     if @shipping_cust.save
       redirect_to quotes_path, notice: 'Valor Salvo!'
     else
-      flash.now[:notice] = 'Valor não Salvo'
+      flash.now[:alert] = 'Valor não Salvo'
       render 'new'
     end
   end
@@ -27,7 +27,7 @@ class ShippingCustsController < ApplicationController
     if @shipping_cust.update(shipping_cust_params)
       redirect_to quotes_path, notice: 'Valor Salvo!'
     else
-      flash.now[:notice] = 'Valor não Editado'
+      flash.now[:alert] = 'Valor não Editado'
       render 'edit'
     end
   end

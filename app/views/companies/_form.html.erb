@@ -1,54 +1,53 @@
 <section style="text-align:center">
-<%# to do: error messages are not appearing %>
   <div>
-    <%= form_with model: @company do |f|%>
+    <%= form_with(model: @company, data: { turbo: false } ) do |f|%>
       <div>
         <%= f.label :brand_name %><br />
         <%= f.text_field :brand_name, placeholder: 'entregas fast' %>
         <% @company.errors.full_messages_for(:brand_name).each do |message| %>
-          <div><%= message %></div>
+          <div style="color:red"><%= message %></div>
         <% end %>
       </div>
       <div>
         <%= f.label :corporate_name %><br />
         <%= f.text_field :corporate_name, placeholder: 'entregas fast Inc.'%>
         <% @company.errors.full_messages_for(:corporate_name).each do |message| %>
-          <div><%= message %></div>
+          <div style="color:red"><%= message %></div>
         <% end %>
       </div>
       <div>
         <%= f.label :registration_number %><br />
         <%= f.text_field :registration_number, placeholder: '84.344.544/0001-60'%>
         <% @company.errors.full_messages_for(:registration_number).each do |message| %>
-          <div><%= message %></div>
+          <div style="color:red"><%= message %></div>
         <% end %>
       </div>
       <div>
         <%= f.label :email_domain %><br />
         <%= f.text_field :email_domain, placeholder: 'entregasfast.com'%>
         <% @company.errors.full_messages_for(:email_domain).each do |message| %>
-          <div><%= message %></div>
+          <div style="color:red"><%= message %></div>
         <% end %>
       </div>
       <div>
         <%= f.label :state_abbr %><br />
         <%= f.text_field :state_abbr, placeholder: 'SP'%>
         <% @company.errors.full_messages_for(:state_abbr).each do |message| %>
-          <div><%= message %></div>
+          <div style="color:red"><%= message %></div>
         <% end %>
       </div>
       <div>
         <%= f.label :address %><br />
         <%= f.text_field :address, placeholder: 'Rua Leopoldo Guimaraes, 233'%>
         <% @company.errors.full_messages_for(:address).each do |message| %>
-          <div><%= message %></div>
+          <div style="color:red"><%= message %></div>
         <% end %>
       </div>
       <div>
         <%= f.label :postal_code %><br />
         <%= f.text_field :postal_code, placeholder: '098535-30'%>
         <% @company.errors.full_messages_for(:postal_code).each do |message| %>
-          <div><%= message %></div>
+          <div style="color:red"><%= message %></div>
         <% end %>
       </div>
       <div>
