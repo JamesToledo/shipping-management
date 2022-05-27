@@ -10,4 +10,5 @@ class Company < ApplicationRecord
   has_many :vehicles
   has_many :budgets
   has_many :shipping_custs
+  has_many :deadlines
 end

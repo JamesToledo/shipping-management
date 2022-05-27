@@ -1,0 +1,24 @@
+<section style="text-align:center">
+  <div>
+    <%= form_with model: @deadline do |form| %>
+      <div>
+        <%= form.label :min_space %> (Km)<br />
+        <%= form.number_field :min_space, placeholder: '0' %>
+      </div>
+      <div>
+        <%= form.label :max_space %> (Km)<br />
+        <%= form.number_field :max_space, placeholder: '100' %>
+      </div>
+      <div>
+        <%= form.label :days %><br />
+        <%= form.number_field :days, placeholder: '2' %>
+      </div>
+      <div>
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
+  <nav>
+    <%= link_to 'cancelar', quotes_path %>
+  </nav>
+</section>

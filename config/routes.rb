@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :companies, only: %i[index show new create update edit]
   resources :budgets, only: %i[new create update edit]
   resources :shipping_custs, only: %i[new create update edit]
+  resources :deadlines, only: %i[new create update edit]
 end

@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      deadline:
+        one: Prazo
+        other: Prazos
+    attributes:
+      deadline:
+        min_space: Início
+        max_space: Final
+        days: Dias Úteis

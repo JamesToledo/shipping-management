@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_26_225949) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_27_122837) do
   create_table "budgets", force: :cascade do |t|
     t.decimal "min_size", null: false
     t.decimal "max_size", null: false
@@ -34,6 +34,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_225949) do
     t.datetime "updated_at", null: false
     t.string "state_abbr"
     t.integer "status", default: 0
+  end
+
+  create_table "deadlines", force: :cascade do |t|
+    t.integer "min_space", null: false
+    t.integer "max_space", null: false
+    t.integer "days", null: false
+    t.integer "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_deadlines_on_company_id"
   end
 
   create_table "shipping_custs", force: :cascade do |t|
@@ -73,6 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_225949) do
   end
 
   add_foreign_key "budgets", "companies"
+  add_foreign_key "deadlines", "companies"
   add_foreign_key "shipping_custs", "companies"
   add_foreign_key "users", "companies"
   add_foreign_key "vehicles", "companies"

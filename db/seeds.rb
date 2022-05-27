@@ -10,5 +10,8 @@ User.create!(username: 'Paula', email: 'paula@sistemadefrete.com', password: 'Pa
 
 Vehicle.create!(vehicle_model: 'cargo 1317', vehicle_make: 'ford', vehicle_plate: 'EPP-5432',
                 year: '2010', load_capacity: 3000, company_id: company.id)
+
 Budget.create!(min_size: 0.001, max_size: 0.500, min_weight: 0, max_weight: 10,
                range_price: 0.50, company_id: company.id)
+
+Deadline.create!(min_space: 0, max_space: 100, days: 2, company_id: company.id)
