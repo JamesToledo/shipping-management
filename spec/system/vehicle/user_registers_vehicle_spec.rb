@@ -4,6 +4,10 @@ require 'rails_helper'
 
 describe 'User registers vehicle' do
   it 'and sees vehicle register form' do
+    company = create(:company)
+    user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
+
+    sign_in user
     visit vehicles_path
     click_on 'cadastrar veiculos'
 
@@ -37,6 +41,10 @@ describe 'User registers vehicle' do
   end
 
   it 'and can cancel' do
+    company = create(:company)
+    user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
+
+    sign_in user
     visit new_vehicle_path
     click_on 'cancelar'
 

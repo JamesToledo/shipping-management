@@ -5,8 +5,11 @@ require 'rails_helper'
 describe 'admin user sees company details' do
   it 'from the admin home page' do
     company = create(:company)
+    admin = create(:user, email: 'admin@sistemadefrete.com')
 
-    visit companies_path
+    sign_in admin
+    visit user_root_path
+    click_on 'Gerenciar Transportadoras'
     click_on company.brand_name
 
     expect(current_path).to eq(company_path(1))
@@ -18,9 +21,11 @@ describe 'admin user sees company details' do
     expect(page).to have_content "Status: #{I18n.t(company.status)}"
   end
 
-  it 'and return to admin home page' do
+  it 'and return to company list page' do
     company = create(:company)
+    admin = create(:user, email: 'admin@sistemadefrete.com')
 
+    sign_in admin
     visit companies_path
     click_on company.brand_name
     click_on 'voltar'

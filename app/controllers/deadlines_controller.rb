@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class DeadlinesController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @deadline = Deadline.new
   end

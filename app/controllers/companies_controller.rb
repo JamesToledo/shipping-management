@@ -2,6 +2,7 @@
 
 class CompaniesController < ApplicationController
   before_action :set_company, only: %i[show edit update]
+  before_action :authenticate_user!
 
   def index
     @companies = Company.all

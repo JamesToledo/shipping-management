@@ -6,7 +6,9 @@ describe 'User sees vehicles list' do
   it 'from the start page' do
     company = create(:company)
     vehicle = create(:vehicle, company_id: company.id)
+    user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
 
+    sign_in user
     visit vehicles_path
 
     expect(page).to have_content 'Veículos Disponíveis'
@@ -17,7 +19,9 @@ describe 'User sees vehicles list' do
   it 'and sees vehicles details' do
     company = create(:company)
     vehicle = create(:vehicle, company_id: company.id)
+    user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
 
+    sign_in user
     visit vehicles_path
     click_on vehicle.vehicle_model
 
@@ -30,7 +34,9 @@ describe 'User sees vehicles list' do
   it 'and can go back' do
     company = create(:company)
     vehicle = create(:vehicle, company_id: company.id)
+    user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
 
+    sign_in user
     visit vehicles_path
     click_on vehicle.vehicle_model
     click_on 'Voltar'

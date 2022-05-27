@@ -5,7 +5,9 @@ require 'rails_helper'
 describe 'admin user edits a company' do
   it 'and see the edit form' do
     company = create(:company)
+    admin = create(:user, email: 'admin@sistemadefrete.com')
 
+    sign_in admin
     visit company_path(1)
     click_on 'editar'
 
@@ -21,7 +23,9 @@ describe 'admin user edits a company' do
 
   it 'successfully' do
     create(:company)
+    admin = create(:user, email: 'admin@sistemadefrete.com')
 
+    sign_in admin
     visit company_path(1)
     click_on 'editar'
     fill_in 'Nome da Marca', with: 'EcoFort'
@@ -32,7 +36,9 @@ describe 'admin user edits a company' do
 
   it 'with invalid parameters' do
     create(:company)
+    admin = create(:user, email: 'admin@sistemadefrete.com')
 
+    sign_in admin
     visit company_path(1)
     click_on 'editar'
     fill_in 'Nome da Marca', with: ''

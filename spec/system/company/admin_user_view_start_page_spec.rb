@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
+require 'rails_helper'
+
 describe 'Admin_User visit the start page' do
   it 'and sees the content' do
-    company =  create(:company)
+    company = create(:company)
+    admin = create(:user, email: 'admin@sistemadefrete.com')
 
+    sign_in admin
     visit companies_path
 
     expect(page).to have_content 'Gerenciamento de Transportadoras'
@@ -13,6 +17,9 @@ describe 'Admin_User visit the start page' do
   end
 
   it 'and there are no companies registered' do
+    admin = create(:user, email: 'admin@sistemadefrete.com')
+
+    sign_in admin
     visit companies_path
 
     expect(page).to have_content 'não há transportadoras cadastradas'

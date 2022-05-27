@@ -2,6 +2,7 @@
 
 class ShippingCustsController < ApplicationController
   before_action :set_shipping_cust, only: %i[edit update]
+  before_action :authenticate_user!
 
   def new
     @budgets = Budget.all
