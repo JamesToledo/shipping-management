@@ -33,4 +33,15 @@ describe 'User sets deadline' do
     expect(current_path).to eq quotes_path
     expect(page).to have_content 'Prazo Salvo!'
   end
+
+  it 'and can cancel' do
+    company = create(:company)
+    user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
+
+    sign_in user
+    visit new_deadline_path
+    click_on 'cancel'
+
+    expect(current_path).to eq quotes_path
+  end
 end
