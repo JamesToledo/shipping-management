@@ -16,6 +16,7 @@ describe 'User sign up' do
     click_on 'cadastrar'
 
     expect(page).to have_content 'Bem vindo! Você realizou seu registro com sucesso'
+    expect(current_path).to eq(user_root_path)
   end
 
   it 'and successfully logout' do
