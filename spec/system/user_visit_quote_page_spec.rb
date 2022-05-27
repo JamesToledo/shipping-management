@@ -33,4 +33,18 @@ describe 'User visit quotes page' do
     expect(page).to have_content budget.row_generator(budget.min_weight, budget.max_weight)
     expect(page).to have_content "R$ #{budget.range_price}"
   end
+
+  it 'and there is a list of deadlines' do
+    company = create(:company)
+    user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
+    deadline = create(:deadline, company_id: company.id)
+
+    sign_in user
+    visit quotes_path
+
+    expect(page).to have_css('th', text: 'Distância')
+    expect(page).to have_css('th', text: 'Prazo')
+    expect(page).to have_content deadline.row_generator(deadline.min_space, deadline.max_space)
+    expect(page).to have_content "#{deadline.days} dias úteis"
+  end
 end
