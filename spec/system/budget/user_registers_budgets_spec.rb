@@ -38,6 +38,11 @@ describe 'User registers a budget' do
   end
 
   it 'and can cancel' do
+    company = create(:company)
+    user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
+
+    sign_in user
+
     visit new_budget_path
     click_on 'cancelar'
 
