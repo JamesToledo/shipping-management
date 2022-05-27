@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class QuotesController < ApplicationController
-   def index
-      @budgets = Budget.all
-   end
+  before_action :authenticate_user!
+
+  def index
+    @shipping_custs = ShippingCust.where(company_id: current_user.company_id)
+    @budgets = Budget.where(company_id: current_user.company_id)
+  end
 end

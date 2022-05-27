@@ -1,0 +1,32 @@
+<section style="text-align:center">
+  <div>
+    <%= form_with model: @budget do |form| %>
+      <div>
+        <%= form.label :min_size %> (m³)<br />
+        <%= form.number_field :min_size, step: :any %>
+      </div>
+      <div>
+        <%= form.label :max_size %> (m³)<br />
+        <%= form.number_field :max_size, step: :any %>
+      </div>
+      <div>
+        <%= form.label :min_weight %> (Kg)<br />
+        <%= form.number_field :min_weight, step: :any %>
+      </div>
+      <div>
+        <%= form.label :max_weight %> (Kg)<br />
+        <%= form.number_field :max_weight, step: :any%>
+      </div>
+      <div>
+        <%= form.label :range_price %> (R$)<br />
+        <%= form.number_field :range_price, step: :any%>
+      </div>
+      <div>
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
+  <nav>
+    <%= link_to 'cancelar', quotes_path %>
+  </nav>
+</section>

@@ -1,0 +1,16 @@
+<section style="text-align:center">
+  <div>
+    <%= form_with model: @shipping_cust do |form| %>
+      <div>
+        <%= form.label :value %><br />
+        <%= form.number_field :value, step: :any %>
+      </div>
+      <div>
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
+  <nav>
+    <%= link_to 'cancelar', quotes_path %>
+  </nav>
+</section>
