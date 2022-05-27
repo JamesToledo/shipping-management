@@ -7,4 +7,8 @@ class ApplicationRecord < ActiveRecord::Base
     I18n.t("activerecord.attributes.#{model_name
            .i18n_key}.#{enum_name.to_s.pluralize}.#{enum_value}")
   end
+
+  def row_generator(first, second)
+    "#{first} a #{second}"
+  end
 end

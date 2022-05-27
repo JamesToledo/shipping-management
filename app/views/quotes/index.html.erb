@@ -52,18 +52,20 @@
   <div><h1>Prazos</h1></div>
   <div>
     <div>
-      <% if @deadlines %>
-        <% @deadlines.each do |budget| %>
+      <% if @deadlines.any? %>
+        <% @deadlines.each do |deadline| %>
           <div>
-            <table>
+            <table style="width: 15%">
               <thead>
                 <tr>
-                  <th></th>
+                  <th style="text-align:center">Distância (Km)</th>
+                  <th style="text-align:center">Prazo</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td></td>
+                  <td style="text-align:center"><%= deadline.row_generator(deadline.min_space, deadline.max_space)%></td>
+                  <td style="text-align:center"><%= "#{deadline.days} dias úteis" %></td>
                 </tr>
               </tbody>
             </table>
@@ -75,6 +77,6 @@
     </div>
   </div>
   <nav>
-    <%= link_to 'Cadastrar Prazos' %>
+    <%= link_to 'Cadastrar Prazos', new_deadline_path %>
   </nav>
 </section>
