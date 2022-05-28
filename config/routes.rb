@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   get '/users', to: 'users#index', as: :user_root
 
-  get '/quotes', to: 'quotes#index', as: :quotes
+  resources :quotes, only: %i[index] do
+    get 'consult', on: :collection
+    get 'search', on: :collection
+  end
 
   root 'home#index'
 
