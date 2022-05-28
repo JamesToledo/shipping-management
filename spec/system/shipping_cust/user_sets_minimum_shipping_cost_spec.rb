@@ -30,10 +30,23 @@ describe 'User sets minimum shipping cost' do
     expect(page).to have_content "R$ #{cust.value}"
   end
 
+  it 'with empty fields' do
+    company = create(:company)
+    user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
+
+    sign_in user
+    visit quotes_path
+    click_on 'Definir Valor'
+    fill_in 'Frete Mínimo', with: ''
+    click_on 'cadastrar'
+
+    expect(page).to have_content 'Valor não Salvo'
+    expect(page).to have_content 'Frete Mínimo não pode ficar em branco'
+  end
+
   it 'and can cancel' do
     company = create(:company)
     user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
-    build(:shipping_cust)
 
     sign_in user
     visit quotes_path

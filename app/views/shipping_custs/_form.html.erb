@@ -4,6 +4,9 @@
       <div>
         <%= form.label :value %><br />
         <%= form.number_field :value, step: :any %>
+        <% @shipping_cust.errors.full_messages_for(:value).each do |message| %>
+          <div style="color:red"><%= message %></div>
+        <% end %>
       </div>
       <div>
         <%= form.submit %>

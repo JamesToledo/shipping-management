@@ -4,14 +4,23 @@
       <div>
         <%= form.label :min_space %> (Km)<br />
         <%= form.number_field :min_space, placeholder: '0' %>
+        <% @deadline.errors.full_messages_for(:min_space).each do |message|%>
+          <div style="color: red"><%= message %></div>
+        <% end %>
       </div>
       <div>
         <%= form.label :max_space %> (Km)<br />
         <%= form.number_field :max_space, placeholder: '100' %>
+        <% @deadline.errors.full_messages_for(:max_space).each do |message|%>
+          <div style="color: red"><%= message %></div>
+        <% end %>
       </div>
       <div>
         <%= form.label :days %><br />
         <%= form.number_field :days, placeholder: '2' %>
+        <% @deadline.errors.full_messages_for(:days).each do |message|%>
+          <div style="color: red"><%= message %></div>
+        <% end %>
       </div>
       <div>
         <%= form.submit %>

@@ -37,6 +37,23 @@ describe 'User registers a budget' do
     expect(current_path).to eq quotes_path
   end
 
+  it 'with empty fields' do
+    company = create(:company)
+    user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
+
+    sign_in user
+    visit user_root_path
+    click_on 'Preços e Prazos'
+    click_on 'Cadastrar Preços'
+    fill_in 'Tamanho Mínimo', with: ''
+    fill_in 'Valor por Km', with: ''
+    click_on 'cadastrar'
+
+    expect(page).to have_content 'Intervalo não Cadastrado'
+    expect(page).to have_content 'Tamanho Mínimo não pode ficar em branco'
+    expect(page).to have_content 'Valor por Km não pode ficar em branco'
+  end
+
   it 'and can cancel' do
     company = create(:company)
     user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)

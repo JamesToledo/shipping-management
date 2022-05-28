@@ -34,6 +34,26 @@ describe 'User sets deadline' do
     expect(page).to have_content 'Prazo Salvo!'
   end
 
+  it 'with empty fields' do
+    company = create(:company)
+    user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
+
+    sign_in user
+    visit vehicles_path
+    click_on 'cadastrar veiculos'
+
+    sign_in user
+    visit new_deadline_path
+    fill_in 'Início', with: ''
+    fill_in 'Dias Úteis', with: ''
+    click_on 'cadastrar'
+
+    expect(page).to have_content 'Prazo não Salvo'
+    expect(page).to have_content 'Início não pode ficar em branco'
+    expect(page).to have_content 'Dias Úteis não pode ficar em branco'
+    expect(current_path).to eq deadlines_path
+  end
+
   it 'and can cancel' do
     company = create(:company)
     user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)

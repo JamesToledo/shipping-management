@@ -40,6 +40,24 @@ describe 'User registers vehicle' do
     expect(current_path).to eq vehicle_path(1)
   end
 
+  it 'with empty fields' do
+    company = create(:company)
+    user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
+
+    sign_in user
+    visit vehicles_path
+    click_on 'cadastrar veiculos'
+
+    fill_in 'Marca do Veículo', with: ''
+    fill_in 'Carga Máxima', with: ''
+    click_on 'cadastrar'
+
+    expect(page).to have_content 'Veículo não Cadastrado'
+    expect(page).to have_content 'Marca do Veículo não pode ficar em branco'
+    expect(page).to have_content 'Carga Máxima não pode ficar em branco'
+    expect(current_path).to eq vehicles_path
+  end
+
   it 'and can cancel' do
     company = create(:company)
     user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
