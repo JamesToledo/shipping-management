@@ -1,6 +1,6 @@
 pt-BR:
-  quotes:
-    consult:
+  orders:
+    index:
       height: Altura
       width: Largura
       length: Comprimento

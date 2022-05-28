@@ -10,7 +10,7 @@
   <% elsif current_user.role == 'admin' %>
     <nav>
       <%= link_to 'Gerenciar Transportadoras', companies_path %><br />
-      <%= link_to 'Consultar Preços e Prazos', consult_quotes_path %>
+      <%= link_to 'Consultar Preços e Prazos', orders_path %>
     </nav>
   <% end %>
 </section>

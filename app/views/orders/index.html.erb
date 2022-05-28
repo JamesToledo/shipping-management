@@ -1,0 +1,40 @@
+<%= render 'links/admin_links' %>
+
+<section style="text-align:center">
+  <div><h1>Preecha os campos abaixo</h1></div>
+  <div>
+    <%= form_with(url: search_orders_path, data: { turbo: false }) do |form| %>
+      <div>
+        <%= form.label :height, "#{t'.height'}" %> (metros)<br />
+        <%= form.number_field :height, step: :any %>
+      </div>
+      <div>
+        <%= form.label :width, "#{t'.width'}" %> (metros)<br />
+        <%= form.number_field :width, step: :any %>
+      </div>
+      <div>
+        <%= form.label :length, "#{t'.length'}" %> (metros)<br />
+        <%= form.number_field :length, step: :any %>
+      </div>
+      <div>
+        <%= form.label :weight , "#{t'.weight'}"%> (Kg)<br />
+        <%= form.number_field :weight, step: :any %>
+      </div>
+      <div>
+        <%= form.label :space, "#{t'.space'}" %> (Km)<br />
+        <%= form.number_field :space, step: :any %>
+      </div>
+      <div>
+        <%= form.submit 'Consultar' %>
+      </div>
+    <% end %>
+  </div>
+</section>
+<% if @queries.present? %>
+  <div style="text-align:center"><h1>Transportadoras Disponíveis</h1></div>
+  <div style="text-align:center">
+    <% @queries.each do |querie| %>
+      <div><%= querie %></div>
+    <% end %>
+  </div>
+<% end %>
