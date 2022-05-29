@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
 
     querie_prices = QueriePricesService.new(params)
     querie_prices.call
+    @message = querie_prices.message
 
     querie_prices.prices.each_with_index do |price, index|
       @queries << "R$ #{price} - #{querie_prices.brand_names[index]} - #{querie_prices.days[index]} dias úteis"
