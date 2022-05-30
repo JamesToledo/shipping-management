@@ -15,7 +15,8 @@ describe 'user sees a list of Orders' do
   end
 
   it 'successfully' do
-    order = create(:order)
+    company = create(:company)
+    order = create(:order, company_id: company.id)
     admin = create(:user, email: 'admin@sistemadefrete.com')
 
     sign_in admin
@@ -23,5 +24,6 @@ describe 'user sees a list of Orders' do
 
     expect(page).to have_content order.code
     expect(page).to have_content I18n.t(order.status)
+    expect(page).to have_content order.company.brand_name
   end
 end

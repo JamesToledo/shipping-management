@@ -1,11 +1,12 @@
 <div><h1>Ordens de Serviço</h1></div>
 <section>
   <div>
-    <table style="width: 15%">
+    <table style="width: 25%">
       <thead>
         <tr>
           <th style="text-align:center">Ordens</th>
           <th style="text-align:center">Status</th>
+          <th style="text-align:center">Transpotadoras</th>
         </tr>
       </thead>
       <tbody>
@@ -13,6 +14,7 @@
           <tr>
             <th style="text-align:center"><%= order.code %></th>
             <th style="text-align:center"><%= I18n.t(order.status) %></th>
+            <th style="text-align:center"><%= order.company.brand_name %></th>
           </tr>
         <% end %>
       </tbody>
