@@ -12,4 +12,5 @@ class Company < ApplicationRecord
   has_many :shipping_custs
   has_many :deadlines
   has_many :users
+  has_many :orders
 end

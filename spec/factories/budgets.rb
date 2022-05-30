@@ -7,5 +7,6 @@ FactoryBot.define do
     min_weight { Faker::Number.decimal(l_digits: 2) }
     max_weight { Faker::Number.decimal(l_digits: 2) }
     range_price { Faker::Number.decimal(l_digits: 2) }
+    company
   end
 end

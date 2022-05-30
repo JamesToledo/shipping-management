@@ -3,14 +3,15 @@
   <div><h3>Onde você deseja ir?</h3></div>
   <% if current_user.role == 'company_user' %>
     <nav>
-      <%= link_to 'Veículos', vehicles_path %><br />
-      <%= link_to 'Preços e Prazos', quotes_path %><br />
-      <%= link_to 'Ordens de Serviço' %>
+      <p><%= link_to 'Veículos', vehicles_path %></p>
+      <p><%= link_to 'Preços e Prazos', quotes_path %></p>
+      <p><%= link_to 'Ordens de Serviço' %></p>
     </nav>
   <% elsif current_user.role == 'admin' %>
     <nav>
-      <%= link_to 'Gerenciar Transportadoras', companies_path %><br />
-      <%= link_to 'Consultar Preços e Prazos', orders_path %>
+      <p><%= link_to 'Gerenciar Transportadoras', companies_path %></p>
+      <p><%= link_to 'Consultar Preços e Prazos', orders_path %></p>
+      <p><%= link_to 'Ordens de Serviço', list_orders_path %></p>
     </nav>
   <% end %>
 </section>

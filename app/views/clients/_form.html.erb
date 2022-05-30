@@ -1,0 +1,40 @@
+<section style="text-align:center">
+  <div>
+    <%= form_with(model: @client, data: { turbo: false }) do |form| %>
+      <div>
+        <%= form.hidden_field :order_id, value: @order_id %>
+      </div>
+      <div>
+        <%= form.label :full_name %>:<br />
+        <%= form.text_field :full_name, placeholder: 'Pedro Álvares Cabral' %>
+      </div>
+      <div>
+        <%= form.label :state_abbr %>:<br />
+        <%= form.text_field :state_abbr, placeholder: 'SP' %>
+      </div>
+      <div>
+        <%= form.label :city %>:<br />
+        <%= form.text_field :city, placeholder: 'São Paulo' %>
+      </div>
+      <div>
+        <%= form.label :district %>:<br />
+        <%= form.text_field :district, placeholder: 'Jardin São José' %>
+      </div>
+      <div>
+        <%= form.label :street %>:<br />
+        <%= form.text_field :street, placeholder: 'R. Afonso de Souza' %>
+      </div>
+      <div>
+        <%= form.label :number %>:<br />
+        <%= form.text_field :number, placeholder: '553' %>
+      </div>
+      <div>
+        <%= form.label :postal_code %>:<br />
+        <%= form.text_field :postal_code, placeholder: '098787-80' %>
+      </div>
+      <div>
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
+</section>

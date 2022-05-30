@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      pickup_location:
+        one: Endereço de Retirada
+        other: Endereços de Retirada
+    attributes:
+      pickup_location:
+        city: Cidade
+        state_abbr: Abreviação do Estado
+        district: Bairro
+        street: Rua
+        number: Numero
+        postal_code: CEP

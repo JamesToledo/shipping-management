@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_27_122837) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_30_185147) do
   create_table "budgets", force: :cascade do |t|
     t.decimal "min_size", null: false
     t.decimal "max_size", null: false
@@ -21,6 +21,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_122837) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_budgets_on_company_id"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "full_name", null: false
+    t.string "city", null: false
+    t.string "state_abbr", null: false
+    t.string "district", null: false
+    t.string "street", null: false
+    t.string "number", null: false
+    t.string "postal_code", null: false
+    t.integer "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_clients_on_order_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -44,6 +58,34 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_122837) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_deadlines_on_company_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "product_code", null: false
+    t.decimal "height", null: false
+    t.decimal "width", null: false
+    t.decimal "length", null: false
+    t.decimal "weight", null: false
+    t.decimal "space", null: false
+    t.integer "status", default: 0
+    t.integer "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_orders_on_company_id"
+  end
+
+  create_table "pickup_locations", force: :cascade do |t|
+    t.string "city", null: false
+    t.string "state_abbr", null: false
+    t.string "district", null: false
+    t.string "street", null: false
+    t.string "number", null: false
+    t.string "postal_code", null: false
+    t.integer "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_pickup_locations_on_order_id"
   end
 
   create_table "shipping_custs", force: :cascade do |t|
@@ -83,7 +125,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_122837) do
   end
 
   add_foreign_key "budgets", "companies"
+  add_foreign_key "clients", "orders"
   add_foreign_key "deadlines", "companies"
+  add_foreign_key "orders", "companies"
+  add_foreign_key "pickup_locations", "orders"
   add_foreign_key "shipping_custs", "companies"
   add_foreign_key "users", "companies"
   add_foreign_key "vehicles", "companies"

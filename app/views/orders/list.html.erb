@@ -1,0 +1,21 @@
+<div><h1>Ordens de Serviço</h1></div>
+<section>
+  <div>
+    <table style="width: 15%">
+      <thead>
+        <tr>
+          <th style="text-align:center">Ordens</th>
+          <th style="text-align:center">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <th style="text-align:center"><%= order.code %></th>
+            <th style="text-align:center"><%= I18n.t(order.status) %></th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>

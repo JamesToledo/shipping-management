@@ -1,0 +1,23 @@
+pt-BR:
+  pending: Pendente
+  accepted: Aceito
+  collected: Coletado
+  in_transit: Em Transito
+  delivered: Entregue
+  cancelled: Cancelado
+  delayed: Atrasado
+  activerecord:
+    models:
+      order:
+        one: Ordem de Serviço
+        other: Ordens de Serviço
+    attributes:
+      order:
+        statuses:
+          pending: Pendente
+          accepted: Aceito
+          collected: Coletado
+          in_transit: Em Transito
+          delivered: Entregue
+          cancelled: Cancelado
+          delayed: Atrasado

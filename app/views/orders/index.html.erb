@@ -3,7 +3,7 @@
 <section style="text-align:center">
   <div><h1>Preecha os campos abaixo</h1></div>
   <div>
-    <%= form_with(url: search_orders_path, data: { turbo: false }) do |form| %>
+    <%= form_with(url: search_orders_path, data: { turbo: false }, method: :get) do |form| %>
       <div>
         <%= form.label :height, "#{t'.height'}" %> (metros)<br />
         <%= form.number_field :height, step: :any %>
@@ -33,12 +33,41 @@
 <% if @queries.present? %>
   <div style="text-align:center"><h1>Transportadoras Disponíveis</h1></div>
   <div style="text-align:center">
-    <% @queries.each do |querie| %>
-      <div><%= querie %></div>
+    <%= form_with(model: @order, url: orders_path, method: 'post', data: { turbo: false }) do |form| %>
+      <% @queries.each_with_index do |querie, index| %>
+        <div>
+          <%= form.radio_button :company_id, @companies[index].id %>
+          <%= form.label :company_id, querie %>
+        </div>
+      <% end %>
+      <br />
+      <div>
+        <%= form.hidden_field :height, value: @parameters[:height] %>
+      </div>
+      <div>
+        <%= form.hidden_field :width, value: @parameters[:width] %>
+      </div>
+      <div>
+        <%= form.hidden_field :length, value: @parameters[:length] %>
+      </div>
+      <div>
+        <%= form.hidden_field :weight, value: @parameters[:weight] %>
+      </div>
+      <div>
+        <%= form.hidden_field :space, value: @parameters[:space] %>
+      </div>
+      <div>
+        <%= form.label :product_code, "#{t'.product_code'}" %><br />
+        <%= form.text_field :product_code %>
+      </div>
+      <br />
+      <div>
+        <%= form.submit 'Fazer Pedido' %>
+      </div>
     <% end %>
   </div>
 <% end %>
-<% if @message %>
+<% if @message.present? %>
   <div style="text-align:center">
     <p>Não há transportadoras disponíveis para essa consulta</p>
   </div>

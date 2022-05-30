@@ -1,0 +1,15 @@
+pt-BR:
+  activerecord:
+    models:
+      client:
+        one: Cliente
+        other: Clientes
+    attributes:
+      client:
+        full_name: Nome Completo
+        city: Cidade
+        state_abbr: Abreviação do Estado
+        district: Bairro
+        street: Rua
+        number: Numero
+        postal_code: CEP

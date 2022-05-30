@@ -11,11 +11,11 @@ describe 'Admin user consults shipping price' do
     click_on 'Consultar Preços e Prazos'
 
     expect(page).to have_css('h1', text: 'Preecha os campos abaixo')
-    expect(page).to have_content 'Altura'
-    expect(page).to have_content 'Largura'
-    expect(page).to have_content 'Comprimento'
-    expect(page).to have_content 'Peso'
-    expect(page).to have_content 'Distância'
+    expect(page).to have_field 'Altura'
+    expect(page).to have_field 'Largura'
+    expect(page).to have_field 'Comprimento'
+    expect(page).to have_field 'Peso'
+    expect(page).to have_field 'Distância'
     expect(page).to have_button 'Consultar'
     expect(page).to_not have_content 'Não há transportadoras disponíveis para essa consulta'
   end
@@ -68,15 +68,19 @@ describe 'Admin user consults shipping price' do
 
   context 'when there are no results for consult' do
     it 'should return a message' do
+      company = create(:company)
+      create(:shipping_cust, value: 10, company_id: company.id)
+      create(:budget, max_size: 0.500, max_weight: 15, range_price: 0.5, company_id: company.id)
+      create(:deadline, max_space: 100, days: 2, company_id: company.id)
       admin = create(:user, email: 'admin@sistemadefrete.com')
 
       sign_in admin
       visit orders_path
-      fill_in 'Altura', with: 0.5
-      fill_in 'Largura', with: 0.2
-      fill_in 'Comprimento', with: 0.35
-      fill_in 'Peso', with: 12
-      fill_in 'Distância', with: 73
+      fill_in 'Altura', with: 30
+      fill_in 'Largura', with: 20
+      fill_in 'Comprimento', with: 1
+      fill_in 'Peso', with: 200
+      fill_in 'Distância', with: 1000
       click_on 'Consultar'
 
       expect(page).to have_content 'Não há transportadoras disponíveis para essa consulta'

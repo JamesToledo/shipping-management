@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class QueriePricesService
-  attr_reader :prices, :brand_names, :days, :message
+  attr_reader :prices, :companies_list, :days, :message
 
   def initialize(params)
     @height = params[:height].to_d
@@ -11,7 +11,7 @@ class QueriePricesService
     @space = params[:space].to_d
     @id_list = []
     @days = []
-    @brand_names = []
+    @companies_list = []
     @prices = []
     @message = ''
   end
@@ -43,7 +43,7 @@ class QueriePricesService
     @budget_list.each do |budget|
       return @message = 'Não há transportadoras disponíveis para essa consulta' if budget.nil?
 
-      @brand_names << budget.company.brand_name
+      @companies_list << budget.company
       price = budget.range_price * @space
       min_price = budget.company.shipping_custs.last.value
       @prices <<
@@ -64,6 +64,8 @@ class QueriePricesService
     end
 
     @deadline_list.each do |deadline|
+      break if deadline.nil?
+
       @days << deadline.days
     end
   end

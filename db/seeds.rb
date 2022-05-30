@@ -17,3 +17,9 @@ Budget.create!(min_size: 0.001, max_size: 0.500, min_weight: 0, max_weight: 10,
 ShippingCust.create!(value: 15, company_id: company.id)
 
 Deadline.create!(min_space: 0, max_space: 100, days: 2, company_id: company.id)
+
+FactoryBot.create(:order, company_id: company.id)
+
+order = FactoryBot.create(:pickup_location, order_id: order.id)
+
+FactoryBot.create(:client, order_id: order.id)
