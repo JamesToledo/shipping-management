@@ -25,4 +25,12 @@ describe 'Visitor visit home page' do
     expect(page).to have_content "Pedido: #{order.code}"
     expect(page).to have_content "Status: #{I18n.t(order.status)}"
   end
+
+  it 'and there are no results' do
+    visit root_path
+    fill_in 'Buscar Pedido', with: 'L5ATQZRJ29MIQPV'
+    click_on 'buscar'
+
+    expect(page).to have_content 'Insira um código válido'
+  end
 end
