@@ -8,6 +8,6 @@ FactoryBot.define do
     email_domain { Faker::Internet.domain_name }
     address { Faker::Address.street_address }
     state_abbr { Faker::Address.state_abbr }
-    postal_code { %w[12421-570 65063-580 68909-464].sample }
+    postal_code { %w[12421570 65063580 68909464].sample }
   end
 end

@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   resources :orders, only: %i[index show create new edit update] do
     get 'search', on: :collection
     get 'list', on: :collection
+    get 'querie', on: :collection
   end
 end

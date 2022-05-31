@@ -5,6 +5,11 @@ class Company < ApplicationRecord
             :address, :email_domain, :postal_code,
             :state_abbr, presence: true
 
+  validates :registration_number, :email_domain, uniqueness: true
+
+  validates :registration_number, length: { is: 14 }
+  validates :postal_code, length: { is: 8 }
+
   enum status: { active: 0, disabled: 1 }
 
   has_many :vehicles

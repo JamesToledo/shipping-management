@@ -1,1 +1,11 @@
 <div style="text-align:center"><h1>Sistema de Entregas</h1></div>
+<section style="text-align:center">
+  <div>
+    <%= form_with(url: querie_orders_path , data: { turbo: false }, method: :get) do |form| %>
+      <div>
+        <%= form.label :querie_order, "#{t'.querie_order'}" %>:
+        <%= form.text_field :querie_order, placeholder: 'Código do Pedido' %> <%= form.submit 'buscar' %>
+      </div>
+    <% end %>
+  </div>
+</section>

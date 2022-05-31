@@ -1,0 +1,11 @@
+<%= render template: 'home/index' %>
+<br />
+<div style="text-align:center"><h1>Resultados da Busca</h1></div>
+<section style="text-align:center">
+  <div>
+    <tr>
+      <td><strong>Pedido: </strong><%= @order.code %> - </td>
+      <td><strong>Status: </strong><%= I18n.t(@order.status) %></td>
+    </tr>
+  </div>
+</section>

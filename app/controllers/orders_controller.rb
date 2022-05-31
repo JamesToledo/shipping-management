@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: %i[querie]
   before_action :set_order, only: %i[show edit update]
 
   def index; end
@@ -41,6 +41,10 @@ class OrdersController < ApplicationController
       company = Company.find_by(id: current_user.company_id)
       @orders = company.orders
     end
+  end
+
+  def querie
+    @order = Order.find_by(code: params[:querie_order])
   end
 
   def show

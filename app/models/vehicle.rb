@@ -6,4 +6,6 @@ class Vehicle < ApplicationRecord
 
   validates :vehicle_model, :vehicle_make, :load_capacity,
             :year, :vehicle_plate, presence: true
+
+  validates :vehicle_plate, uniqueness: true
 end
