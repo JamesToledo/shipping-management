@@ -13,6 +13,7 @@ pt-BR:
         other: Ordens de Serviço
     attributes:
       order:
+        vehicle_id: Veículo
         statuses:
           pending: Pendente
           accepted: Aceito

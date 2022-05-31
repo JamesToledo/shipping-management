@@ -2,7 +2,7 @@
 
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_order, only: %i[show]
+  before_action :set_order, only: %i[show edit update]
 
   def index; end
 
@@ -46,6 +46,8 @@ class OrdersController < ApplicationController
   def show
     @size = @order.height * @order.width * @order.length
 
+    @vehicle = @order.vehicle.vehicle_model if @order.vehicle.present?
+
     location = @order.pickup_location
     @pickup_location = location.makefull_address(location.city, location.state_abbr,
                                                  location.district, location.street,
@@ -57,6 +59,19 @@ class OrdersController < ApplicationController
                                         @client.number, @client.postal_code)
   end
 
+  def edit
+    @vehicles = Vehicle.all
+  end
+
+  def update
+    if @order.update(order_params)
+      redirect_to @order, notice: 'Status Atualizado!'
+    else
+      flash.now[:alert] = 'Status não Atualizado'
+      render 'edit'
+    end
+  end
+
   private
 
   def set_order
@@ -65,7 +80,7 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(
-      :height, :width, :length, :weight, :space, :product_code, :company_id
+      :height, :width, :length, :weight, :space, :product_code, :status, :vehicle_id, :company_id
     )
   end
 end

@@ -2,6 +2,7 @@
 
 class Order < ApplicationRecord
   belongs_to :company
+  belongs_to :vehicle, optional: true
   has_one :pickup_location
   has_one :client
 

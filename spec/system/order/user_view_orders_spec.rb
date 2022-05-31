@@ -8,7 +8,6 @@ describe 'User sees orders' do
     order = create(:order, company_id: company.id)
     other_company = create(:company, brand_name: 'Entregas fast')
     other_order = create(:order, status: 'accepted', company_id: other_company.id)
-
     user = create(:user, email: "pedro@#{company.email_domain}", company_id: company.id)
 
     sign_in user
@@ -34,7 +33,7 @@ describe 'User sees orders' do
     click_on 'detalhes'
 
     expect(page).to have_css('h1', text: "Ordem: #{order.code}")
-    expect(page).to have_content "Status: #{order.status}"
+    expect(page).to have_content "Status: #{I18n.t(order.status)}"
     expect(page).to have_content "Tamanho: #{order.height * order.width * order.length}m³"
     expect(page).to have_content "Peso: #{order.weight}"
     expect(page).to have_content "Retirada: #{location.makefull_address(location.city, location.state_abbr,

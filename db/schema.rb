@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_30_185147) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_31_101843) do
   create_table "budgets", force: :cascade do |t|
     t.decimal "min_size", null: false
     t.decimal "max_size", null: false
@@ -72,7 +72,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_30_185147) do
     t.integer "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "vehicle_id"
     t.index ["company_id"], name: "index_orders_on_company_id"
+    t.index ["vehicle_id"], name: "index_orders_on_vehicle_id"
   end
 
   create_table "pickup_locations", force: :cascade do |t|
@@ -128,6 +130,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_30_185147) do
   add_foreign_key "clients", "orders"
   add_foreign_key "deadlines", "companies"
   add_foreign_key "orders", "companies"
+  add_foreign_key "orders", "vehicles"
   add_foreign_key "pickup_locations", "orders"
   add_foreign_key "shipping_custs", "companies"
   add_foreign_key "users", "companies"
