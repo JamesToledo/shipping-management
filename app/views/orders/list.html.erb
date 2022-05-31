@@ -1,3 +1,8 @@
+<% if current_user.role == 'admin' %>
+  <%= render 'links/admin_links' %>
+<% else %>
+  <%= render 'links/links' %>
+<% end %>
 <div><h1>Ordens de Serviço</h1></div>
 <section>
   <div>
@@ -6,15 +11,21 @@
         <tr>
           <th style="text-align:center">Ordens</th>
           <th style="text-align:center">Status</th>
-          <th style="text-align:center">Transpotadoras</th>
+          <% if current_user.role == 'admin' %>
+              <th style="text-align:center">Transpotadoras</th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
         <% @orders.each do |order| %>
           <tr>
-            <th style="text-align:center"><%= order.code %></th>
-            <th style="text-align:center"><%= I18n.t(order.status) %></th>
-            <th style="text-align:center"><%= order.company.brand_name %></th>
+            <td style="text-align:center"><%= order.code %></td>
+            <td style="text-align:center"><%= I18n.t(order.status) %></td>
+            <% if current_user.role == 'admin' %>
+              <td style="text-align:center"><%= order.company.brand_name %></td>
+            <% else %>
+              <td style="text-align:center"><%= button_to 'detalhes', order, method: 'get' %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

@@ -5,7 +5,7 @@
     <nav>
       <p><%= link_to 'Veículos', vehicles_path %></p>
       <p><%= link_to 'Preços e Prazos', quotes_path %></p>
-      <p><%= link_to 'Ordens de Serviço' %></p>
+      <p><%= link_to 'Ordens de Serviço', list_orders_path %></p>
     </nav>
   <% elsif current_user.role == 'admin' %>
     <nav>

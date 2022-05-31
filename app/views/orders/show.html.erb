@@ -1,0 +1,14 @@
+<%= render 'links/links' %>
+<div><h1>Ordem: <%= @order.code %></h1></div>
+<section>
+  <div>
+    <ul>
+      <li><strong>Status: </strong><%= @order.status %></li>
+      <li><strong>Tamanho: </strong><%= @size %>m³</li>
+      <li><strong>Peso: </strong><%= @order.weight %></li>
+      <li><strong>Retirada: </strong><%= @pickup_location %></li>
+      <li><strong>Entrega: </strong><%= @address %></li>
+      <li><strong>Destinatário: </strong><%= @client.full_name %></li>
+    </ul>
+  </div>
+</section>

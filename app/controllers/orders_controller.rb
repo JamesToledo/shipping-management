@@ -2,6 +2,7 @@
 
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_order, only: %i[show]
 
   def index; end
 
@@ -34,10 +35,33 @@ class OrdersController < ApplicationController
   end
 
   def list
-    @orders = Order.all
+    if current_user.role == 'admin'
+      @orders = Order.all
+    else
+      company = Company.find_by(id: current_user.company_id)
+      @orders = company.orders
+    end
+  end
+
+  def show
+    @size = @order.height * @order.width * @order.length
+
+    location = @order.pickup_location
+    @pickup_location = location.makefull_address(location.city, location.state_abbr,
+                                                 location.district, location.street,
+                                                 location.number, location.postal_code)
+
+    @client = @order.client
+    @address = @client.makefull_address(@client.city, @client.state_abbr,
+                                        @client.district, @client.street,
+                                        @client.number, @client.postal_code)
   end
 
   private
+
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
   def order_params
     params.require(:order).permit(

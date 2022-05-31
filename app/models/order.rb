@@ -2,8 +2,8 @@
 
 class Order < ApplicationRecord
   belongs_to :company
-  has_many :pickup_locations
-  has_many :clients
+  has_one :pickup_location
+  has_one :client
 
   enum status: { pending: 0, accepted: 1, collected: 2, in_transit: 3,
                  delivered: 4, cancelled: 5, delayed: 6 }

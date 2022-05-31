@@ -11,4 +11,8 @@ class ApplicationRecord < ActiveRecord::Base
   def row_generator(first, second)
     "#{first} a #{second}"
   end
+
+  def makefull_address(city, state, district, street, number, postal_code)
+    "#{street}, #{number} - #{district}, #{city} - #{state}, #{postal_code}"
+  end
 end
