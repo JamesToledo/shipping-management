@@ -26,12 +26,14 @@ Nodejs 14.18.2 <br>
 Yarn 1.22.15 <br>
 
 Gems :
-* gem 'capybara'(ferramenta de testes)
-* gem 'factory_bot_rails'(ferramenta de testes)
-* gem 'faker'(ferramenta de testes)
+* gem 'capybara'(ferramenta de testes para simular a navegação pela app)
+* gem 'factory_bot_rails'(fabrica de objetos para auxiliar nos arranges)
+* gem 'faker'(gerador de atributos aleatorios para auxiliar nos arranges)
 * gem 'pry-byebug'(usada no desenvolviento do projeto para ver as coisas acontecerem no runtime)
-* gem 'rspec-rails'(ferramenta de testes)
-* gem 'shoulda-matchers'(ferramenta de testes)
+* gem 'rspec-rails'(ferramenta de criação de testes)
+* gem 'shoulda-matchers'(ferramenta de testes para auxiliar nos asserts)
+* gem 'simplecov'(ferramenta para verificar a cobertuda de testes)
+* gem 'devise'(ferramenta para fazer autenticação de usuários)
 
 Link do Trello:
 https://trello.com/b/M4la3re0/projeto-individudal

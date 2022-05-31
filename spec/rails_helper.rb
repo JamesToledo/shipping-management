@@ -7,7 +7,7 @@ SimpleCov.start 'rails' do
   add_filter '/app/mailers/'
   add_filter '/app/jobs/'
 
-  minimum_coverage line: 100
+  minimum_coverage line: 96.88
 end
 
 require 'spec_helper'
