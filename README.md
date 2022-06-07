@@ -1,31 +1,56 @@
 # Shipping Management
 
-Este projeto é uma aplicação web responsável por gerenciar os meios de transporte disponíveis para e-comerces. No qual poderão ser feitos orçamentos em diferentes transportadoras e serão listados os preços e prazos de cada transportadora com status ativo, além disso, visitantes podem consultar o status de uma entrega informando o código de rastreamento da entrega.
+Este projeto é uma aplicação web responsável por gerenciar meios de transporte disponíveis para e-commerces. Teremos várias transportadoras cadastradas e cada uma delas deverá configurar seus preços de entrega e seus prazos. As transportadoras podem receber ordens de serviço dentro da plataforma. Visitantes podem buscar pedidos informando o código do pedido.
 
-<h3>Como executar o projeto:</h3>
-  com o git já instalado use o comando:<br>
-  git clone git@github.com:JamesToledo/shipping-management.git
+Usuários das transportadoras devem configurar os preços praticados pela transportadora de acordo com a distância e dimensões da carga. Os prazos também devem ser configurados de acordo com a distância a ser percorrida.
 
-  e depois:<br>
-  bin/setup
+O sistema terá usuários administradores que irão cadastrar as transportadoras e fazer consultas de orçamento envolvendo todas as transportadoras cadastradas(administradores são identificados pelo domínio de email @sistemadefrete.com). Os administradores também serão responsáveis por criar uma nova ordem de serviço para as transportadoras.
 
-  para rodar os testes:<br>
-  bundle exec rspec
+## Como executar o projeto
 
-  para rodar a aplicação em sua máquina:<br>
-  rails server
+com o git já instalado use o comando:
 
-  acesse em seu navegador:<br>
-  http://localhost:3000/
+```text
+git clone git@github.com:JamesToledo/shipping-management.git
+```
 
-Dependencias do sistema: <br>
-Rails 7.0.3 <br>
-sqlite3 1.4 <br>
-Ruby 3.1.0 <br>
-Nodejs 14.18.2 <br>
-Yarn 1.22.15 <br>
+em seguida:
+
+```text
+bin/setup
+```
+
+para rodar os testes:
+
+```text
+bundle exec rspec
+```
+
+para rodar a aplicação em sua máquina:
+
+```text
+rails server
+```
+
+acesse em seu navegador:
+<http://localhost:3000/>
+
+  para logar como usuário de transportadora:
+   email: pedrinho@fast.com
+   senha: Pedrinho123
+
+  para logar como usuário admin:
+   email: paula@sistemadefrete.com
+   senha: Paula123
+
+## Dependencias do sistema
+
+```text
+Ruby 3.1.0
+```
 
 Gems :
+
 * gem 'capybara'(ferramenta de testes para simular a navegação pela app)
 * gem 'factory_bot_rails'(fabrica de objetos para auxiliar nos arranges)
 * gem 'faker'(gerador de atributos aleatorios para auxiliar nos arranges)
@@ -36,4 +61,4 @@ Gems :
 * gem 'devise'(ferramenta para fazer autenticação de usuários)
 
 Link do Trello:
-https://trello.com/b/M4la3re0/projeto-individudal
+<https://trello.com/b/M4la3re0/projeto-individudal>
